@@ -22,4 +22,6 @@ python -m venv mousewiggler
 # active
 python mousewiggler/Scripts/activate
 
+# Out 
+deactivate
 ```
