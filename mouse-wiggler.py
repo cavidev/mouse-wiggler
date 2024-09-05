@@ -5,27 +5,31 @@ import sys
 
 pyautogui.FAILSAFE = False
 screenSize = pyautogui.size()
-negative = -1
 
 def wiggle_mouse() -> None:
     """
     Wiggles the mouse between two coordinates.
     """
-    global negative
     x, y = pyautogui.position()
     
     pyautogui.moveTo(
-        x= x + negative*10, 
+        x= x + (-100), 
         y=y,
-        duration=1
+        duration=0.5
     )
-    negative = 1 if negative == -1 else -1
-    time.sleep(10)
+    
+    x, y = pyautogui.position()
+    pyautogui.moveTo(
+        x= x + (100), 
+        y=y,
+        duration=0.5
+    )
+    pyautogui.click()
+    time.sleep(2)
     
 if __name__ == "__main__":
     print('Press Ctrl-C to quit.')
     try:
-        
         while True:
             wiggle_mouse()
             sys.stdout.flush()
